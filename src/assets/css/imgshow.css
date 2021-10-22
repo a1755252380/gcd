@@ -1,0 +1,26 @@
+#ul{
+    position: relative;
+    list-style: none;
+   
+}
+#ul li{
+    vertical-align:top;
+
+    position: absolute;
+    transition: all 1s;
+}
+#ul li img{
+box-shadow: 0 0 5px rgba(105,105,105,0.49);
+-webkit-box-shadow: 0 0 5px rgba(105,105,105,0.49);
+border: 8px solid #fff;
+}
+#ul li.checked{
+    left: 40% !important;
+    top: 430px !important;
+    transform: rotate(0deg) translate(-50%,-50%) scale(1.5,1.5) !important;
+    z-index: 99 !important;
+}
+.checked img{
+    width: 150%;
+    border: 13px solid #fff !important;
+}

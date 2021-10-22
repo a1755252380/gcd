@@ -1,29 +1,54 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+
+    component: () => import("../views/Countdown.vue")
   },
   {
-    path: '/about',
-    name: 'About',
+    path: "/begin",
+    component: () => import("../views/begin.vue")
+  },
+  {
+    path: "/gcd",
+    component: () => import("../views/gcd.vue")
+  },
+  {
+    path: "/Tunnel",
+    component: () => import("../views/Tunnel_img.vue")
+  },
+  {
+    path: "/video",
+    component: () => import("../views/video.vue")
+  },
+  {
+    path: "/musiccard",
+    name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/musiccard.vue")
+  },
+  {
+    path: "/imgshow",
+    name: "imgshow",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/imgshow.vue")
   }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;
