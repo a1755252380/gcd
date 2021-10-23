@@ -164,7 +164,7 @@ export default {
             }
             $(".item")
               .eq(i)
-              .css("transform", "translateZ(" + Z + "px)");
+              .css("transform", " translateZ(" + Z + "px)");
             Z += 10;
           }, 5);
         }, delay);
@@ -267,6 +267,7 @@ export default {
   font-size: 0;
   width: 100%;
   height: 100%;
+  // transform: skew(2deg, 5deg);
 }
 
 .text1 {

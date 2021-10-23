@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <remote-js src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/three.js/71/three.min.js"></remote-js>
+    <remote-js src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/three.js/72/three.min.js"></remote-js>
     <router-view />
     <tabVue class="tab"></tabVue>
   </div>

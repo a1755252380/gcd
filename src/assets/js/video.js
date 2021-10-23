@@ -17,7 +17,7 @@ $(function() {
   var giantColor = "180,184,240";
   var starColor = "226,225,142";
   var cometColor = "226,225,224";
-  var canva = document.getElementById("universe");
+  var canvas2 = document.getElementById("universe");
   var stars = [];
 
   windowResizeHandler();
@@ -26,7 +26,7 @@ $(function() {
   createUniverse();
 
   function createUniverse() {
-    universe = canva.getContext("2d");
+    universe = canvas2.getContext("2d");
 
     for (var i = 0; i < starCount; i++) {
       stars[i] = new Star();
@@ -162,7 +162,7 @@ $(function() {
       y: height / 2
     };
 
-    canva.setAttribute("width", width);
-    canva.setAttribute("height", height);
+    canvas2.setAttribute("width", width);
+    canvas2.setAttribute("height", height);
   }
 });

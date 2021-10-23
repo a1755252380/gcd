@@ -1,16 +1,16 @@
 $(function() {
-  const canvas = document.querySelector("canvas");
+  const canvas = document.getElementById("countdown");
   const ctx = canvas.getContext("2d");
-  const layers = 4;
+  const layers = 6;
   let size = 0;
   let particles = [];
   let targets = [];
   const lerp = (t, v0, v1) => (1 - t) * v0 + t * v1;
-  const fov = 2000;
-  const viewDistance = 200;
+  const fov = 3000; //层数之间相隔的距离
+  const viewDistance = 300;
   let targetRotationY = 0.5;
   let rotationY = 0.5;
-  let speed = 40;
+  let speed = 200; //渲染速度
   let animFrame;
   const texts = [
     "10",
@@ -23,13 +23,14 @@ $(function() {
     "3",
     "2",
     "1",
-    "GCD歌唱队",
+    "GCD!",
     "老年人欢送会！",
     "开始！！！"
   ];
 
   let textIndex = 0;
-
+  let s = 2000;
+  let change = false;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
@@ -73,7 +74,15 @@ $(function() {
     const text =
       //   document.getElementById("textInput").value ||
       texts[textIndex++ % texts.length];
-    let fontSize = 450;
+    console.log(textIndex);
+    if (textIndex >= 10) {
+      change = true;
+      // s = 5000;
+    } else {
+      // s = 2000;
+      change = false;
+    }
+    let fontSize = 400;
     let startX = window.innerWidth / 2;
     let startY = window.innerHeight / 2;
     particles = [];
@@ -122,7 +131,8 @@ $(function() {
 
     targets = targets.sort((a, b) => a.x - b.x);
     loop();
-    return false;
+    // console.log("渲染完成");
+    return true;
   }
 
   function loop() {
@@ -161,21 +171,32 @@ $(function() {
           .rotateX(rotationX)
           .rotateY(rotationY)
           .pp();
-
         const s = 1 - p.position.z / layers;
         ctx.fillStyle =
-          p.target.z === 0 ? "rgb(114, 204, 255)" : `rgba(242, 101, 49, ${s})`;
+          p.target.z === 0 ? "rgb(255, 255, 255)" : `rgba(245, 245, 245, ${s})`;
 
         ctx.fillRect(particle.x, particle.y, s * size, s * size);
       });
 
     animFrame = requestAnimationFrame(loop);
+    // console.log(1);
   }
 
   init();
-  setInterval(() => {
-    init();
-  }, 3000);
+
+  let time1 = setInterval(() => {
+    if (change) {
+      clearInterval(time1);
+      cancelAnimationFrame(animFrame);
+      // return;
+      init();
+      setInterval(() => {
+        init();
+      }, 6000);
+    } else {
+      init();
+    }
+  }, s);
   window.addEventListener("mousemove", e => {
     const halfHeight = window.innerHeight / 2;
     targetRotationY = (e.clientY - halfHeight) / window.innerHeight;
