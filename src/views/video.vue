@@ -1,23 +1,26 @@
 <template>
   <div class="videodiv">
+    <div id="over"
+         class="overdiv"></div>
     <xkbackVue></xkbackVue>
-    <div
-      class="container2"
-      v-if="videshow"
-    >
+    <div class="container2"
+         v-if="videshow">
       <p>G C D is <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
     </div>
-    <div
-      class="video card videoddivshow"
-      v-else
-      id="video"
-    >
-      <video-player
-        class="video-player vjs-custom-skin"
-        ref="videoPlayer"
-        :playsinline="true"
-        :options="playerOptions"
-      />
+    <div class="video card videoddivshow"
+         v-else
+         id="video">
+      <video-player class="video-player vjs-custom-skin"
+                    ref="videoPlayer"
+                    :playsinline="true"
+                    :options="playerOptions" />
+      <div class="cont"
+           @click="overbtn">
+        <a class="element">
+          →
+        </a>
+      </div>
+
     </div>
   </div>
 
@@ -130,11 +133,93 @@ export default {
     // 调用打字
     setTimeout(type, newTextDelay + 250);
   },
+  methods: {
+    overbtn () {
+      $("#over").addClass("over");
+      let that = this
+      setTimeout(() => {
+        this.$router.push({ path: "/Tunnel" })
+      }, 5000);
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
 /deep/.vjs-custom-skin > .video-js .vjs-big-play-button {
   display: none;
+}
+//切换蒙版
+.overdiv {
+  height: 100%;
+
+  z-index: 99999;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.over {
+  height: 100%;
+
+  -webkit-animation: identifier 5s infinite ease;
+  animation: identifier 5s infinite ease;
+}
+@keyframes identifier {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+//按钮
+.cont {
+  text-align: center;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: -10%;
+  bottom: 45%;
+}
+
+.element {
+  padding: 1rem 2rem;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8rem;
+  transition: box-shadow 600ms cubic-bezier(0.33, 0.11, 0.02, 0.99);
+}
+.element:hover {
+  background: rgb(250, 223, 223);
+  color: #000;
+  box-shadow: 0 4px 4px rgba(255, 255, 255, 0.1),
+    0 1px 6px rgba(255, 255, 255, 0.05), 0 8px 8px rgba(255, 255, 255, 0.1),
+    0 12px 12px rgba(255, 255, 255, 0.1),
+    5px 18px 18px rgba(255, 255, 255, 0.15),
+    5px 22px 22px rgba(255, 255, 255, 0.15);
+}
+
+.info {
+  min-height: 20vh;
+  background-color: #2c6597;
+  font-family: "Josefin Sans", sans-serif;
+  color: #aaaaee;
+  text-align: center;
+  padding: 2rem;
+  margin: 0;
+}
+.info a {
+  color: #ddd;
+  text-decoration: none;
+  border-bottom: solid #ddd 1px;
+}
+
+.zuo {
 }
 //打字
 .container2 {

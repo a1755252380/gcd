@@ -1,6 +1,13 @@
 <template>
   <div style="width:100%;height:100%">
-    <div class="all-wrap">
+    <div class="end"
+         id="end">
+      <div class="bubbleTail3">
+        <div class="wenzi3 ">救命啊！！下面好黑！！</div>
+      </div>
+    </div>
+    <div class="all-wrap"
+         @click="catclick">
       <div class="all">
         <div class="yarn"></div>
         <div class="cat-wrap">
@@ -18,7 +25,7 @@
                   <div class="cat-mouth"></div>
                   <div class="cat-whiskers">
                     <div class="bubbleTail">
-                      <div class="wenzi">{{this.wenzidata[0]}}</div>
+                      <div class="wenzi ">{{this.wenzidata[0]}}</div>
                     </div>
 
                   </div>
@@ -145,13 +152,20 @@ export default {
   mounted () {
     $("body").css("background", "#f8f8df")
     $("body").css("overflow", "hidden")
+
+    document.getElementById("end").addEventListener("resize", function () {
+      console.log(document.getElementById("end").offsetHeight)
+      if (document.getElementById("end").offsetHeight >= 800) {
+        $("#end").css("animation-play-state", "paused")
+      }
+    })
     let old = 0
     this.time = setInterval(() => {
       let ra = parseInt(Math.random() * this.wenzidata.length)
       if (ra === old) {
         return
       } else {
-        console.log(ra)
+        // console.log(ra)
         old = ra
         $(".wenzi").text(this.wenzidata[ra])
       }
@@ -163,10 +177,126 @@ export default {
     $("body").css("background", "")
     $("body").css("overflow", "")
     clearInterval(this.time)
+  },
+  methods: {
+    catclick () {
+      $("#end").addClass("engheight");
+      clearInterval(this.time)
+      $(".wenzi").addClass("wenzi2");
+      $(".wenzi").parents().addClass("bubbleTail2")
+      $(".wenzi").text("别别别！！！")
+      setTimeout(() => {
+        $(".wenzi").text("救命救命！！！")
+      }, 2000);
+      setTimeout(() => {
+        console.log("aaa")
+        $("#end").removeClass("engheight");
+
+
+        $(".wenzi").text("Help！！！")
+
+        $("#end").css("height", "50%")
+        setTimeout(() => {
+          $("#end").addClass("engheight2");
+
+        }, 1000);
+        setTimeout(() => {
+          $("#end").removeClass("engheight2");
+          $(".bubbleTail3").css("display", "block")
+          $("#end").css("height", "90%")
+          setTimeout(() => {
+            $("#end").addClass("engheight3");
+            $("#end").css("height", "100%")
+            $(".bubbleTail3").css("display", "none")
+            setTimeout(() => {
+              this.$router.push({ path: "/countdown" })
+            }, 1000);
+          }, 1000);
+
+        }, 5000);
+      }, 5000);
+
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
+.end {
+  width: 100%;
+  height: 0px;
+  z-index: 9999;
+  background: #1f1f3c;
+}
+.engheight {
+  -webkit-animation: ending 5s infinite ease;
+  animation: ending 5s infinite ease;
+}
+.engheight2 {
+  -webkit-animation: ending2 5s infinite ease;
+  animation: ending2 5s infinite ease;
+}
+.engheight3 {
+  -webkit-animation: ending3 1s infinite ease;
+  animation: ending3 1s infinite ease;
+}
+@keyframes ending2 {
+  0% {
+    height: 50%;
+  }
+
+  100% {
+    height: 90%;
+  }
+}
+@keyframes ending3 {
+  0% {
+    height: 90%;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+@keyframes ending {
+  0% {
+    height: 0px;
+  }
+
+  100% {
+    height: 50%;
+  }
+}
+.bubbleTail2 {
+  color: #f01414cb !important;
+}
+.bubbleTail3 {
+  position: absolute;
+  display: none;
+  left: 45%;
+  bottom: -70px;
+  width: 0;
+  height: 0;
+  border-width: 21px;
+  border-style: solid;
+  border-color: transparent;
+  margin-bottom: -19px;
+  border-top-width: 22px;
+  border-top-color: currentColor;
+  color: rgb(50, 235, 44);
+  .wenzi3 {
+    background: rgb(50, 235, 44);
+    color: #1f1f3c;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 25px;
+    height: 120px !important;
+    width: 250px !important;
+    font-weight: 800 !important;
+    position: relative;
+    top: -140px;
+    left: -60px;
+  }
+}
 .bubbleTail {
   position: absolute;
   left: 50px;
@@ -192,6 +322,14 @@ export default {
     font-weight: 600;
     color: #e97d4b;
     background: #ebe974;
+  }
+  .wenzi2 {
+    height: 120px !important;
+    width: 250px !important;
+    font-weight: 800 !important;
+    font-size: 30px !important;
+    color: #d1e425 !important;
+    background: #f01414cb !important;
   }
 }
 .all-wrap {

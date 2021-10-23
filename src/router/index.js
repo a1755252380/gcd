@@ -7,6 +7,11 @@ const routes = [
   {
     path: "/",
 
+    component: () => import("../views/begin.vue")
+  },
+  {
+    path: "/Countdown",
+
     component: () => import("../views/Countdown.vue")
   },
   {

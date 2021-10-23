@@ -2,35 +2,13 @@
   <div class="main2 ">
     <tunnelbackgroundVue></tunnelbackgroundVue>
     <div class="ct">
-      <div
-        v-for="(item, index) in imgdata"
-        :key="index"
-        class="item"
-        :data-i=index
-      ><img
-          :src="item"
-          alt=""
-        ></div>
+      <div v-for="(item, index) in imgdata"
+           :key="index"
+           class="item"
+           :data-i=index><img :src="item"
+             alt=""></div>
     </div>
-    <div class="pic-wrapper">
-      <div class="close"></div>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide"
-            v-for="(item, index) in imgdata"
-            :key="index"
-          >
-            <img
-              :src="item"
-              alt=""
-            >
-          </div>
-        </div>
-      </div>
-      <div class="swiper-button-prev swiper-button-white"></div>
-      <div class="swiper-button-next swiper-button-white"></div>
-    </div>
+
   </div>
 </template>
 <script>
@@ -51,10 +29,14 @@ export default {
       require('../assets/img/img/8.png'),
       require('../assets/img/img/9.png'),
       require('../assets/img/img/10.png'),
-      require('../assets/img/img/11.png')]
+      require('../assets/img/img/11.png')],
+      timers: null
     };
   },
   components: { tunnelbackgroundVue },
+  destroyed () {
+    clearInterval(this.timers)
+  },
   mounted () {
     this.$nextTick(() => {
       let swiper = new Swiper(".swiper-container", {
@@ -147,7 +129,7 @@ export default {
           let Z = ~~$(".item")
             .eq(i)
             .attr("data-z");
-          timer = setInterval(function () {
+          this.timers = setInterval(function () {
 
             if (Z >= -9909) {
               $(".item")
@@ -165,12 +147,13 @@ export default {
             $(".item")
               .eq(i)
               .css("transform", " translateZ(" + Z + "px)");
-            Z += 10;
+            Z += 30;
           }, 5);
         }, delay);
       }
     }
-  }
+  },
+
 }
 </script>
 <style lang="scss" scoped>

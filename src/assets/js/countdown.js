@@ -1,4 +1,5 @@
 $(function() {
+  let that=this
   const canvas = document.getElementById("countdown");
   const ctx = canvas.getContext("2d");
   const layers = 6;
@@ -75,6 +76,10 @@ $(function() {
       //   document.getElementById("textInput").value ||
       texts[textIndex++ % texts.length];
     console.log(textIndex);
+    if(textIndex===texts.length+1){
+      window.location.href = 'http://127.0.0.1:8080/video'
+      // that.$router.push({ path: "/video" })
+    }
     if (textIndex >= 10) {
       change = true;
       // s = 5000;

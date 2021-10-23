@@ -1,52 +1,40 @@
 <template>
   <div>
-    <div
-      class="end"
-      id="tunnel_end"
-    >
+    <div class="end"
+         id="tunnel_end">
       <div id="pulse"></div>
     </div>
-    <div
-      v-for="(item, index) in 4"
-      :key="index"
-      :class="container4(index)"
-    >
+    <div v-for="(item, index) in 4"
+         :key="index"
+         :class="container4(index)">
       <div :class="wrapper4(index)">
         <div :class="hole4(index)">
           <div class="space-bottom">
 
-            <div
-              class="star-bottom"
-              v-for="(item, index) in number"
-              :key="index"
-            ></div>
+            <div class="star-bottom"
+                 v-for="(item, index) in number"
+                 :key="index"></div>
 
           </div>
           <div class="space-top">
 
-            <div
-              class="star-top"
-              v-for="(item, index) in number"
-              :key="index"
-            ></div>
+            <div class="star-top"
+                 v-for="(item, index) in number"
+                 :key="index"></div>
 
           </div>
           <div class="space-left">
 
-            <div
-              class="star-left"
-              v-for="(item, index) in number"
-              :key="index"
-            ></div>
+            <div class="star-left"
+                 v-for="(item, index) in number"
+                 :key="index"></div>
 
           </div>
           <div class="space-right">
 
-            <div
-              class="star-right"
-              v-for="(item, index) in number"
-              :key="index"
-            ></div>
+            <div class="star-right"
+                 v-for="(item, index) in number"
+                 :key="index"></div>
 
           </div>
         </div>
@@ -73,7 +61,7 @@ export default {
       setTimeout(() => {
         that.$router.push({ path: "/imgshow" })
       }, 5000);
-    }, 150000);
+    }, 15000);
   },
   destroyed () {
     $("body").css("background", "");
