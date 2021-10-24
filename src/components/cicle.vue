@@ -1,14 +1,12 @@
 <template>
   <div style="">
-
+    <xkbackVue></xkbackVue>
     <div class="box">
       <div class="scene">
         <div class=" cicle_div">
-          <div
-            id="canvasBox"
-            style="
-          width:100%;height:100%"
-          ></div>
+          <div id="canvasBox"
+               style="
+          width:100%;height:100%"></div>
         </div>
         <div class=" cicleback">
 
@@ -98,7 +96,7 @@ export default {
       // 设置光线
       scene.add(new THREE.HemisphereLight('#ffffff', '#ffffff', 1));
       // 定义地球材质
-      var earthTexture = THREE.ImageUtils.loadTexture(require("../assets/img/earth.jpg"), {}, function () {
+      var earthTexture = THREE.ImageUtils.loadTexture(require("../assets/img/11.jpg"), {}, function () {
         renderer.render(scene, camera);
       });
       // 创建地球
@@ -137,6 +135,7 @@ export default {
     $("body").css('background', "")
   },
   components: {
+    xkbackVue
   }
 }
 </script>
