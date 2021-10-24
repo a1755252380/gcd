@@ -7,7 +7,7 @@ const routes = [
   {
     path: "/",
 
-    component: () => import("../views/begin.vue")
+    component: () => import("../components/xkback.vue")
   },
   {
     path: "/Countdown",

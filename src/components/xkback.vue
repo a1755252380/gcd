@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+
     <div class="content">
       <canvas id="universe"></canvas>
       <div id="footer">
@@ -187,9 +188,14 @@
   </div>
 </template>
 <script>
-import "../assets/js/video"
-export default {
 
+import * as THREE from 'three'
+import "../assets/js/video"
+import cicleVue from '../components/cicle.vue'
+export default {
+  components: {
+
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <remote-js src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/three.js/72/three.min.js"></remote-js>
+    <!-- <remote-js src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/three.js/72/three.min.js"></remote-js> -->
+    <!-- <remote-js src="https://techbrood.com/threejs/build/three.min.js"></remote-js> -->
+    <!-- <remote-js src="https://techbrood.com/threejs/examples/js/controls/OrbitControls.js"></remote-js> -->
     <router-view />
     <tabVue class="tab"></tabVue>
   </div>
@@ -10,14 +12,14 @@ import tabVue from './components/tab.vue'
 export default {
   components: {
     tabVue,
-    'remote-js': {
-      render (createElement) {
-        return createElement('script', { attrs: { type: 'text/javascript', src: this.src } });
-      },
-      props: {
-        src: { type: String, required: true },
-      },
-    },
+    // 'remote-js': {
+    //   render (createElement) {
+    //     return createElement('script', { attrs: { type: 'text/javascript', src: this.src } });
+    //   },
+    //   props: {
+    //     src: { type: String, required: true },
+    //   },
+    // },
   },
 
 }
