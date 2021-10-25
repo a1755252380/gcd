@@ -16,6 +16,9 @@ import xkbackVue from '../components/xkback.vue'
 export default {
   mounted () {
     $("body").css("overflow", "hidden")
+    this.$nextTick(function () {
+
+    });
   },
   destroyed () {
     $("body").css("overflow", "")

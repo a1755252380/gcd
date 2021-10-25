@@ -1,23 +1,39 @@
 <template>
   <div class="container">
-    <div class="photo"
-         :style="{backgroundImage:'url('+this.imgdata2[0]+')'}"></div>
+    <div
+      class="photo"
+      :style="{backgroundImage:'url('+this.imgdata2[0]+')'}"
+    ></div>
 
-    <div class="shutter"
-         style="--flaps: 6">
+    <div
+      class="shutter"
+      style="--flaps: 6"
+    >
 
-      <div class="flap"
-           style="--i: 0"></div>
-      <div class="flap"
-           style="--i: 1"></div>
-      <div class="flap"
-           style="--i: 2"></div>
-      <div class="flap"
-           style="--i: 3"></div>
-      <div class="flap"
-           style="--i: 4"></div>
-      <div class="flap"
-           style="--i: 5"></div>
+      <div
+        class="flap"
+        style="--i: 0"
+      ></div>
+      <div
+        class="flap"
+        style="--i: 1"
+      ></div>
+      <div
+        class="flap"
+        style="--i: 2"
+      ></div>
+      <div
+        class="flap"
+        style="--i: 3"
+      ></div>
+      <div
+        class="flap"
+        style="--i: 4"
+      ></div>
+      <div
+        class="flap"
+        style="--i: 5"
+      ></div>
 
     </div>
 
@@ -32,7 +48,10 @@
       ></li> -->
 
     </ul>
-    <button class="learn-more">→</button>
+    <button
+      class="learn-more"
+      @click="imgclick"
+    >→</button>
 
   </div>
 </template>
@@ -103,11 +122,9 @@ export default {
     $("body").css("background", "")
   },
   methods: {
-    //     imgclick (e) {
-    //       console.log(e)
-    //       document.getElementById('ul').children.className = "";
-    //       e.className = "checked"
-    //     }
+    imgclick (e) {
+      this.$router.push({ path: "/musiccard" })
+    }
   },
 }
 </script>

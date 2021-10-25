@@ -66,7 +66,7 @@
         <div class="text">
           <article>
             <p>Uh oh! Looks like you got lost. <br>Go back to the homepage if you dare!</p>
-            <button>GO！GO！GO！</button>
+            <button @click="goclick">GO！GO！GO！</button>
           </article>
         </div>
 
@@ -94,7 +94,12 @@ export default {
   },
   beforedestroyed () {
     $("body").css("overflow", "")
-  }
+  },
+  methods: {
+    goclick () {
+      this.$router.push({ path: "/countdown" })
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>

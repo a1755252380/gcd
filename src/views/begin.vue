@@ -1,13 +1,17 @@
 <template>
   <div style="width:100%;height:100%">
-    <div class="end"
-         id="end">
+    <div
+      class="end"
+      id="end"
+    >
       <div class="bubbleTail3">
         <div class="wenzi3 ">救命啊！！下面好黑！！</div>
       </div>
     </div>
-    <div class="all-wrap"
-         @click="catclick">
+    <div
+      class="all-wrap"
+      @click="catclick"
+    >
       <div class="all">
         <div class="yarn"></div>
         <div class="cat-wrap">
@@ -209,7 +213,7 @@ export default {
             $("#end").css("height", "100%")
             $(".bubbleTail3").css("display", "none")
             setTimeout(() => {
-              this.$router.push({ path: "/countdown" })
+              this.$router.push({ path: "/gcd" })
             }, 1000);
           }, 1000);
 
@@ -225,7 +229,7 @@ export default {
   width: 100%;
   height: 0px;
   z-index: 9999;
-  background: #1f1f3c;
+  background: #000;
 }
 .engheight {
   -webkit-animation: ending 5s infinite ease;

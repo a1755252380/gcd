@@ -7,12 +7,22 @@ const routes = [
   {
     path: "/",
 
-    component: () => import("../components/cicle.vue")
+    component: () => import("../views/begin.vue")
   },
   {
     path: "/Countdown",
 
     component: () => import("../views/Countdown.vue")
+  },
+  {
+    path: "/work",
+
+    component: () => import("../views/work.vue")
+  },
+  {
+    path: "/danger",
+
+    component: () => import("../views/danger.vue")
   },
   {
     path: "/begin",
