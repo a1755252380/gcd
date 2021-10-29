@@ -148,9 +148,11 @@ export default {
   },
   mounted () {
     $("body").css("background", "#032b39")
+    $("#xkback").css("display", "none")
   },
   beforeDestroy () {
     $("body").css("background", "")
+    $("#xkback").css("display", "block")
   },
   methods: {
     bgmPlay (index) {

@@ -1,21 +1,31 @@
 <template>
   <div class="videodiv">
-    <div id="over"
-         class="overdiv"></div>
-    <xkbackVue></xkbackVue>
-    <div class="container2"
-         v-if="videshow">
-      <p>G C D is <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+    <div
+      id="over"
+      class="overdiv"
+    ></div>
+    <!-- <xkbackVue></xkbackVue> -->
+    <div
+      class="container2"
+      v-if="videshow"
+    >
+      <p><span id="gcd">G C D </span><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
     </div>
-    <div class="video card videoddivshow"
-         v-else
-         id="video">
-      <video-player class="video-player vjs-custom-skin"
-                    ref="videoPlayer"
-                    :playsinline="true"
-                    :options="playerOptions" />
-      <div class="cont"
-           @click="overbtn">
+    <div
+      class="video card videoddivshow"
+      v-else
+      id="video"
+    >
+      <video-player
+        class="video-player vjs-custom-skin  "
+        ref="videoPlayer"
+        :playsinline="true"
+        :options="playerOptions"
+      />
+      <div
+        class="cont"
+        @click="overbtn"
+      >
         <a class="element">
           →
         </a>
@@ -65,14 +75,17 @@ export default {
       }
     }
   },
-  components: { videoPlayer, xkbackVue },
+  components: {
+    videoPlayer,
+    // xkbackVue 
+  },
   mounted () {
     //打字
     const typedTextSpan = document.querySelector(".typed-text");
     const cursorSpan = document.querySelector(".cursor");
 
     // const textArray = ["欢迎你们的加入！！", "fun", "a journey", "LIFE"];
-    const textArray = ["欢"];
+    const textArray = ["欢", "一声歌唱队，一生歌唱队"];
     const typingSpeed = 200;
     const erasingSpeed = 100;
     const newTextDelay = 2000; // Delay between current and next text
@@ -99,7 +112,13 @@ export default {
     function erase () {
       if (end < textArray.length) {
         console.log(end);
-      } else {
+        if (end == textArray.length - 1) {
+          $("#gcd").hide()
+          $(".typed-text").css("font-size", "95px")
+        }
+      }
+
+      else {
         console.log("打完了");
 
         that.videshow = !that.videshow
@@ -108,6 +127,10 @@ export default {
           // $("#video").addClass("video");
           // $(".vjs-big-play-button").css("display", "block")
           $(".videoddivshow").removeClass("videoddivshow");
+          $(".cont").addClass("contshow");
+          setTimeout(() => {
+            $(".cont").css("opacity", "1")
+          }, 3000);
         }, 3000);
         return;
       }
@@ -176,12 +199,21 @@ export default {
 //按钮
 .cont {
   text-align: center;
-  background-color: transparent;
+  // background-color: rgba(255, 255, 255, 0.3);
   padding: 0;
   margin: 0;
   position: absolute;
   right: -10%;
   bottom: 45%;
+  opacity: 0;
+}
+.contshow {
+  animation: contshow 3s 1 linear;
+}
+@keyframes contshow {
+  to {
+    opacity: 1;
+  }
 }
 
 .element {
@@ -190,7 +222,7 @@ export default {
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 8rem;
   transition: box-shadow 600ms cubic-bezier(0.33, 0.11, 0.02, 0.99);
 }
@@ -288,20 +320,10 @@ export default {
     height: 630px;
   }
   .videoddivshow {
-    width: 1120px;
+    // width: 1120px;
     height: 630px;
     animation: videodivshow 3s linear infinite;
   }
-}
-@property --rotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: false;
-}
-
-:root {
-  --card-height: 630px;
-  --card-width: 1120px;
 }
 
 .card {
@@ -311,25 +333,9 @@ export default {
   z-index: 9999;
   font-size: 1.5em;
   margin-bottom: 5%;
+  box-shadow: 1px 1px 15px 2px rgba(255, 255, 255, 0.4);
 }
 
-.card::before {
-  content: "";
-  width: 102%;
-  height: 102%;
-  border-radius: 8px;
-  background-image: linear-gradient(
-    var(--rotate),
-    #5ddcff,
-    #3c67e3 43%,
-    #4e00c2
-  );
-  position: absolute;
-  z-index: -1;
-  top: -1%;
-  left: -1%;
-  animation: spin 2.5s linear infinite;
-}
 @keyframes videodivshow {
   0% {
     height: 0px;
@@ -337,7 +343,7 @@ export default {
     opacity: 1;
   }
   49% {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.4);
     width: 0px;
     opacity: 1;
   }
@@ -350,7 +356,7 @@ export default {
   }
 
   100% {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.4);
     width: 1120px;
     height: 630px;
     opacity: 1;

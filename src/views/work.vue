@@ -1,43 +1,55 @@
 <template>
-  <div class="workbody">
-    <llqVue></llqVue>
-    <div class="wrapper">
-      <div class="bubbleTail">
-        <div class="wenzi ">垃圾代码</div>
+  <div>
+    <div class="content">
+      <div class="loader"><span class="loader_letter">修</span><span class="loader_letter">修</span>
+        <span class="loader_letter">补</span>
+        <span class="loader_letter">补</span>
+        <!-- <span class="loader_letter">i</span><span class="loader_letter">n</span><span class="loader_letter">g</span><span class="loader_letter">.</span> -->
+        <span class="loader_letter">.</span><span class="loader_letter">.</span>
       </div>
-      <div class="sofa">
-        <div class="sofa-cushion"></div>
-        <div class="sofa-bottom-l"></div>
-        <div class="sofa-bottom-r"></div>
-      </div>
-      <div class="cat">
-        <div class="cat-arm-shoulder"></div>
-        <div class="cat-head">
-          <div class="cat-ear-l"></div>
-          <div class="cat-ear-r"></div>
-          <div class="cat-eye-l"></div>
-          <div class="cat-eye-r"></div>
+    </div>
+
+    <div class="workbody">
+
+      <llqVue></llqVue>
+      <div class="wrapper">
+        <div class="bubbleTail">
+          <div class="wenzi ">垃圾代码</div>
         </div>
-        <div class="cat-arm-l"></div>
-        <div class="cat-arm-r"></div>
-        <div class="cat-tale"></div>
-      </div>
-      <div class="boy">
-        <div class="arm-l"></div>
-        <div class="foot-l"></div>
-        <div class="head">
-          <div class="face">
-            <div class="hair-1"></div>
-            <div class="hair-2"></div>
-            <div class="eye-l"></div>
-            <div class="eye-r"></div>
+        <div class="sofa">
+          <div class="sofa-cushion"></div>
+          <div class="sofa-bottom-l"></div>
+          <div class="sofa-bottom-r"></div>
+        </div>
+        <div class="cat">
+          <div class="cat-arm-shoulder"></div>
+          <div class="cat-head">
+            <div class="cat-ear-l"></div>
+            <div class="cat-ear-r"></div>
+            <div class="cat-eye-l"></div>
+            <div class="cat-eye-r"></div>
           </div>
-          <div class="hair-3"></div>
+          <div class="cat-arm-l"></div>
+          <div class="cat-arm-r"></div>
+          <div class="cat-tale"></div>
         </div>
-        <div class="foot-r"></div>
-        <div class="arm-r"></div>
-        <div class="laptop">
-          <div class="light"></div>
+        <div class="boy">
+          <div class="arm-l"></div>
+          <div class="foot-l"></div>
+          <div class="head">
+            <div class="face">
+              <div class="hair-1"></div>
+              <div class="hair-2"></div>
+              <div class="eye-l"></div>
+              <div class="eye-r"></div>
+            </div>
+            <div class="hair-3"></div>
+          </div>
+          <div class="foot-r"></div>
+          <div class="arm-r"></div>
+          <div class="laptop">
+            <div class="light"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -55,24 +67,106 @@ export default {
   },
   components: { llqVue },
   mounted () {
+    $("#xkback").css("display", "none")
+    let that = this
     $(function () {
+
       let wenzidata = ['10行代码15个bug', '头大', '谁写的！！', '哦，好像是我！！', '那没事了，真帅，马上就妥了，稍等...']
       let index = 0
       this.time = setInterval(() => {
-        $(".wenzi").text(wenzidata[index])
-        if (index === wenzidata.length) {
-          $(".bubbleTail").hide();
+
+        if (index === wenzidata.length + 1) {
+          // $(".bubbleTail").hide();
+          that.$router.push({ path: "/cicle" })
+        } else {
+          $(".wenzi").text(wenzidata[index])
         }
         index++
-      }, 1500);
+      }, 2000);
     })
   },
   destroyed () {
+    $("#xkback").css("display", "block")
     clearInterval(this.time)
   }
 }
 </script>
 <style lang="scss" scoped>
+.content {
+  animation: hue 10s linear infinite;
+  position: absolute;
+  width: 100%;
+  top: 25%;
+  z-index: 9;
+}
+
+.loader {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 2em;
+  top: 50%;
+  margin-top: -1em;
+}
+.loader_letter {
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Helvetica", sans-serif;
+  font-weight: bold;
+  padding: 0 0.2em;
+  font-size: 2em;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  animation: bounce 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite alternate;
+}
+.loader_letter:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader_letter:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.loader_letter:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.loader_letter:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.loader_letter:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.loader_letter:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.loader_letter:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.loader_letter:nth-child(8) {
+  animation-delay: 0.35s;
+}
+.loader_letter:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.loader_letter:nth-child(10) {
+  animation-delay: 0.5s;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-1em);
+  }
+}
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
 .bubbleTail {
   z-index: 9;
 

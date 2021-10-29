@@ -1,12 +1,17 @@
 <template>
-  <div style="">
-    <xkbackVue></xkbackVue>
+  <div
+    style=""
+    @click="click"
+  >
+    <!-- <xkbackVue></xkbackVue> -->
     <div class="box">
       <div class="scene">
         <div class=" cicle_div">
-          <div id="canvasBox"
-               style="
-          width:100%;height:100%"></div>
+          <div
+            id="canvasBox"
+            style="
+          width:100%;height:100%"
+          ></div>
         </div>
         <div class=" cicleback">
 
@@ -135,8 +140,13 @@ export default {
     $("body").css('background', "")
   },
   components: {
-    xkbackVue
-  }
+    // xkbackVue
+  },
+  methods: {
+    click () {
+      this.$router.push({ path: "/video" })
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>

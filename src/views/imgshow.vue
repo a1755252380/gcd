@@ -66,7 +66,7 @@ export default {
     };
   },
   mounted () {
-
+    $("#xkback").css("display", "none")
     for (var i = 1; i < 25; i++) {
       this.imgdata.push(require("../assets/img/img/" + i + ".png"))
     }
@@ -120,6 +120,7 @@ export default {
   beforeDestroy () {
     $("#app").css("position", '')
     $("body").css("background", "")
+    $("#xkback").css("display", "block")
   },
   methods: {
     imgclick (e) {

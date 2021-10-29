@@ -154,7 +154,8 @@ export default {
     };
   },
   mounted () {
-    $("body").css("background", "#f8f8df")
+    $("#xkback").css("display", "none")
+    $("body").css("background", "radial-gradient(1600px at 70% 120%,rgba(33, 39, 80, 1) 10%, #020409 100%)")
     $("body").css("overflow", "hidden")
 
     document.getElementById("end").addEventListener("resize", function () {
@@ -180,6 +181,7 @@ export default {
   destroyed () {
     $("body").css("background", "")
     $("body").css("overflow", "")
+    $("#xkback").css("display", "block")
     clearInterval(this.time)
   },
   methods: {
@@ -188,6 +190,8 @@ export default {
       clearInterval(this.time)
       $(".wenzi").addClass("wenzi2");
       $(".wenzi").parents().addClass("bubbleTail2")
+      $(".cat-eyes").addClass("cat-eyes2 ")
+      $(".cat-eyes ").removeClass("cat-eyes ");
       $(".wenzi").text("别别别！！！")
       setTimeout(() => {
         $(".wenzi").text("救命救命！！！")
@@ -628,6 +632,29 @@ export default {
   left: 20px;
 }
 .cat-eyes:after {
+  right: 20px;
+}
+
+.cat-eyes2 {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  height: 6px;
+  -webkit-animation: blink 11s step-end infinite both;
+  animation: blink 11s step-end infinite both;
+}
+.cat-eyes2:before,
+.cat-eyes2:after {
+  position: absolute;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  border: 1px solid #4b4d75;
+}
+.cat-eyes2:before {
+  left: 20px;
+}
+.cat-eyes2:after {
   right: 20px;
 }
 

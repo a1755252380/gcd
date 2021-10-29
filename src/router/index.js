@@ -15,6 +15,11 @@ const routes = [
     component: () => import("../views/Countdown.vue")
   },
   {
+    path: "/cicle",
+
+    component: () => import("../components/cicle.vue")
+  },
+  {
     path: "/work",
 
     component: () => import("../views/work.vue")

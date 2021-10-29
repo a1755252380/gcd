@@ -2,11 +2,15 @@
   <div class="main2 ">
     <tunnelbackgroundVue></tunnelbackgroundVue>
     <div class="ct">
-      <div v-for="(item, index) in imgdata"
-           :key="index"
-           class="item"
-           :data-i=index><img :src="item"
-             alt=""></div>
+      <div
+        v-for="(item, index) in imgdata"
+        :key="index"
+        class="item"
+        :data-i=index
+      ><img
+          :src="item"
+          alt=""
+        ></div>
     </div>
 
   </div>
@@ -35,9 +39,11 @@ export default {
   },
   components: { tunnelbackgroundVue },
   destroyed () {
+    $("#xkback").css("display", "block")
     clearInterval(this.timers)
   },
   mounted () {
+    $("#xkback").css("display", "none")
     this.$nextTick(() => {
       let swiper = new Swiper(".swiper-container", {
         direction: "horizontal", // 垂直切换选项

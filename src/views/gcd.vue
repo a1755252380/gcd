@@ -84,16 +84,17 @@ export default {
   data () {
     return {
 
-
     };
   },
   mounted () {
     var scene = document.getElementById('scene');
     new Parallax(scene);
     $("body").css("overflow", "hidden")
+    $("#xkback").css("display", "none")
   },
-  beforedestroyed () {
+  destroyed () {
     $("body").css("overflow", "")
+    $("#xkback").css("display", "block")
   },
   methods: {
     goclick () {
