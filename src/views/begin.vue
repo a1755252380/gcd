@@ -529,6 +529,7 @@ export default {
   }
 }
 .all-wrap {
+  z-index: 10;
   -webkit-animation: bob 11s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
   animation: bob 11s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
 }

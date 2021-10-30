@@ -115,22 +115,15 @@
           <span class="right"></span>
         </a>
         <h2>
-          Card title
-          <small>Image from unsplash</small>
+          NO.{{index}}
+          <small>&nbsp;</small>
         </h2>
       </div>
       <div class="card-flap flap1">
         <div class="card-description">
           This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
         </div>
-        <div class="card-flap flap2">
-          <div class="card-actions">
-            <a
-              href="#"
-              class="cardbtn"
-            >Read more</a>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -157,9 +150,22 @@ export default {
   methods: {
     bgmPlay (index) {
       var bgm = document.getElementById("player_audio" + index);
-      bgm.play();
-      $("#play" + index).addClass("active");
-      $(".cog-img" + index).addClass("rotating");
+      if (bgm !== null) {
+        //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+        // alert(bgm.paused);
+        if (bgm.paused) {
+          $("#play" + index).addClass("active");
+          $(".cog-img" + index).addClass("rotating");
+          bgm.play();//audio.play();// 这个就是播放  
+        } else {
+          $("#play" + index).removeClass("active");
+          //   $("#stop" + index).addClass("active");
+          $(".cog-img" + index).removeClass("rotating");
+          bgm.pause();// 这个就是暂停
+
+        }
+      }
+
       //   $(".stop").removeClass("active");
     },
     bgmStop (index) {

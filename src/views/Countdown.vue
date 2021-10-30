@@ -32,11 +32,7 @@ export default {
       let speed = 200; //渲染速度
       let animFrame;
       const texts = [
-        "10",
-        "9",
-        "8",
-        "7",
-        "6",
+
         "5",
         "4",
         "3",
