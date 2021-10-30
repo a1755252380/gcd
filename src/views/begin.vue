@@ -141,43 +141,9 @@
         </div>
       </div>
     </div>
-    <div class="aaa">
-      <svg viewBox="0 0 800 300">
-        <!-- Symbol-->
-        <symbol id="s-text">
-          <text
-            text-anchor="middle"
-            x="50%"
-            y="50%"
-            dy=".35em"
-          >GCD歌唱队</text>
-        </symbol>
-        <!-- Duplicate symbols-->
-        <use
-          class="text"
-          xlink:href="#s-text"
-        ></use>
-        <use
-          class="text"
-          xlink:href="#s-text"
-        ></use>
-        <use
-          class="text"
-          xlink:href="#s-text"
-        ></use>
-        <use
-          class="text"
-          xlink:href="#s-text"
-        ></use>
-        <use
-          class="text"
-          xlink:href="#s-text"
-        ></use>
-      </svg>
 
-    </div>
     <!-- 3d字体 -->
-    <!-- <div class="patterns">
+    <div class="patterns">
       <svg
         width="100%"
         height="100%"
@@ -191,12 +157,12 @@
             height="100"
             patternUnits="userSpaceOnUse"
           >
-            <circle
+            <!-- <circle
               fill="#be9ddf"
               cx="25"
               cy="25"
               r="3"
-            ></circle>
+            ></circle> -->
           </pattern>
 
         </defs>
@@ -217,7 +183,7 @@
           GCD歌唱队
         </text>
       </svg>
-    </div> -->
+    </div>
 
   </div>
 </template>
@@ -307,116 +273,55 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.aaa {
-  width: 100%;
-  height: 50vh;
-  font-size: 120px;
-  position: absolute;
-  bottom: 3%;
-  z-index: 9;
-  .text {
-    fill: none;
-    stroke-width: 3;
-    stroke-linejoin: round;
-    stroke-dasharray: 70 330;
-    stroke-dashoffset: 0;
-    -webkit-animation: stroke 6s infinite linear;
-    animation: stroke 6s infinite linear;
-  }
-  .text:nth-child(5n + 1) {
-    stroke: #f2385a;
-    -webkit-animation-delay: -1.2s;
-    animation-delay: -1.2s;
-  }
-  .text:nth-child(5n + 2) {
-    stroke: #f5a503;
-    -webkit-animation-delay: -2.4s;
-    animation-delay: -2.4s;
-  }
-  .text:nth-child(5n + 3) {
-    stroke: #e9f1df;
-    -webkit-animation-delay: -3.6s;
-    animation-delay: -3.6s;
-  }
-  .text:nth-child(5n + 4) {
-    stroke: #56d9cd;
-    -webkit-animation-delay: -4.8s;
-    animation-delay: -4.8s;
-  }
-  .text:nth-child(5n + 5) {
-    stroke: #3aa1bf;
-    -webkit-animation-delay: -6s;
-    animation-delay: -6s;
-  }
+//文字描边
+.patterns {
+  height: 100vh;
+}
 
-  @-webkit-keyframes stroke {
-    100% {
-      stroke-dashoffset: -400;
-    }
-  }
-  @keyframes stroke {
-    100% {
-      stroke-dashoffset: -400;
-    }
-  }
+svg text {
+  font-family: Lora;
+  letter-spacing: 10px;
+  stroke: #ffa5d8;
+  font-size: 150px;
+  font-weight: 700;
+  stroke-width: 3;
 
-  svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  animation: textAnimate 5s infinite alternate;
+  text-shadow: 2px 2px #ffa5d8;
+}
+
+@keyframes textAnimate {
+  0% {
+    stroke-dasharray: 0 50%;
+    stroke-dashoffset: 20%;
+    fill: hsl(189, 71%, 70%);
+    text-shadow: 2px 2px hsl(189, 78%, 86%), 3px 3px hsl(189, 78%, 86%),
+      4px 4px hsl(189, 78%, 86%);
+  }
+  // 20% {
+  //   stroke: hsl(19, 81%, 65%);
+  // }
+  // 40% {
+  //   stroke: hsl(61, 81%, 65%);
+  // }
+  // 70% {
+  //   stroke: hsl(231, 81%, 65%);
+  //   fill: hsla(189, 68%, 75%, 0%);
+  //   stroke-dasharray: 25% 0;
+  // }
+  // 80% {
+  //   stroke: hsl(261, 82%, 63%);
+  // }
+  // 90% {
+  //   stroke: #fccee9;
+  // }
+  100% {
+    stroke-dasharray: 50% 0;
+    stroke-dashoffstet: -20%;
+    fill: hsla(189, 68%, 75%, 0%);
   }
 }
 
-//文字描边
-// .patterns {
-//   height: 100vh;
-// }
-
-// svg text {
-//   font-family: Lora;
-//   letter-spacing: 10px;
-//   stroke: #ffa5d8;
-//   font-size: 150px;
-//   font-weight: 700;
-//   stroke-width: 3;
-
-//   animation: textAnimate 5s infinite alternate;
-//   text-shadow: 2px 2px #ffa5d8;
-// }
-
-// @keyframes textAnimate {
-//   0% {
-//     stroke-dasharray: 0 50%;
-//     stroke-dashoffset: 20%;
-//     fill: hsl(189, 71%, 70%);
-//     text-shadow: 2px 2px hsl(189, 78%, 86%), 3px 3px hsl(189, 78%, 86%),
-//       4px 4px hsl(189, 78%, 86%);
-//   }
-//   // 20% {
-//   //   stroke: hsl(19, 81%, 65%);
-//   // }
-//   // 40% {
-//   //   stroke: hsl(61, 81%, 65%);
-//   // }
-//   // 70% {
-//   //   stroke: hsl(231, 81%, 65%);
-//   //   fill: hsla(189, 68%, 75%, 0%);
-//   //   stroke-dasharray: 25% 0;
-//   // }
-//   // 80% {
-//   //   stroke: hsl(261, 82%, 63%);
-//   // }
-//   // 90% {
-//   //   stroke: #fccee9;
-//   // }
-//   100% {
-//     stroke-dasharray: 50% 0;
-//     stroke-dashoffstet: -20%;
-//     fill: hsla(189, 68%, 75%, 0%);
-//   }
-// }
-
-//
 .end {
   width: 100%;
   height: 0px;
