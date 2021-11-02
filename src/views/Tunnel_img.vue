@@ -23,17 +23,21 @@ import tunnelbackgroundVue from './tunnel_background.vue';
 export default {
   data () {
     return {
-      imgdata: [require('../assets/img/img/1.png'),
-      require('../assets/img/img/2.png'),
-      require('../assets/img/img/3.png'),
-      require('../assets/img/img/4.png'),
-      require('../assets/img/img/5.png'),
-      require('../assets/img/img/6.png'),
-      require('../assets/img/img/7.png'),
-      require('../assets/img/img/8.png'),
-      require('../assets/img/img/9.png'),
-      require('../assets/img/img/10.png'),
-      require('../assets/img/img/11.png')],
+      imgdata: [require('../assets/img/2019/1.jpg'),
+      require('../assets/img/2019/2.jpg'),
+      require('../assets/img/2019/3.jpg'),
+      require('../assets/img/2019/4.jpg'),
+      require('../assets/img/2019/5.jpg'),
+      require('../assets/img/2019/6.jpg'),
+      require('../assets/img/2019/7.jpg'),
+      require('../assets/img/2019/8.jpg'),
+      require('../assets/img/2019/9.jpg'),
+      require('../assets/img/2019/10.jpg'),
+      require('../assets/img/2019/11.jpg'),
+      require('../assets/img/2019/12.jpg'),
+      require('../assets/img/2019/13.jpg'),
+      require('../assets/img/2019/14.jpg'),
+      ],
       timers: null
     };
   },
@@ -242,7 +246,7 @@ export default {
   font-size: 0;
   position: absolute;
   transform-origin: center;
-  width: 700px;
+  width: 950px;
   transform: translateZ(-10000px);
   background-color: rgba(176, 44, 47, 0.2);
   border: 8px solid #fff;

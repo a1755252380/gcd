@@ -62,7 +62,7 @@ export default {
     return {
       imgdata: [],
       bodyimg: require('../assets/img/a.jpg'),
-      imgdata2: [require("../assets/img/img/10.png")]
+      imgdata2: [require("../assets/img/cc.jpg")]
     };
   },
   mounted () {
