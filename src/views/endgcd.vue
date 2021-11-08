@@ -5,8 +5,31 @@
 </template>
 <script>
 export default {
+  data () {
+    return {
+      little: 20,
+      big: 200,
+      bigwrite: "G C D 歌 唱 队"
+    };
+  },
   mounted () {
+    if (document.documentElement.clientWidth <= 568) {
+      this.big = 115
+      this.bigwrite = "G C D"
+      this.little = 15
+    } else
+      if (document.documentElement.clientWidth >= 568 && document.documentElement.clientWidth <= 768) {
+        this.big = 110
+        this.little = 15
+        // $("#c").css("marginLeft", "-5%")
+        this.little = 15
+      } else if (document.documentElement.clientWidth > 768 && document.documentElement.clientWidth <= 1024) {
+        this.big = 120
+        this.little = 15
+      }
+    let this_ = this
     this.$nextTick(function () {
+
       ; (function (main) {
         var args = {};
         window.onload = function () {
@@ -140,10 +163,10 @@ export default {
         txtCanvas.width = WIDTH;
         txtCanvas.height = HEIGHT;
 
-        txtCtx.font = 'bold 200px Sans-serif';
+        txtCtx.font = 'bold ' + this_.big + 'px Sans-serif';
         txtCtx.textAlign = 'center';
         txtCtx.baseline = 'middle';
-        txtCtx.fillText('G C D 歌 唱 队', WIDTH / 2, HEIGHT / 2);
+        txtCtx.fillText(this_.bigwrite, WIDTH / 2, HEIGHT / 2);
 
 
 
@@ -186,7 +209,7 @@ export default {
           ctx.globalCompositeOperation = 'source-over';
           ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
           ctx.fillRect(0, 0, WIDTH, HEIGHT);
-          ctx.font = 'bold 20px Monospace';
+          ctx.font = 'bold ' + this_.little + 'px Monospace';
           ctx.textAlign = 'center';
           ctx.baseline = 'middle';
           ctx.fillStyle = 'white';

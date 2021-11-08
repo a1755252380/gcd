@@ -58,6 +58,7 @@ export default {
   position: absolute;
   left: 0;
   bottom: 0;
+  width: 100%;
 }
 .window {
   border-radius: 3px;

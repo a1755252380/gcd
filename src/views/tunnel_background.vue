@@ -1,40 +1,52 @@
 <template>
   <div>
-    <div class="end"
-         id="tunnel_end">
+    <div
+      class="end"
+      id="tunnel_end"
+    >
       <div id="pulse"></div>
     </div>
-    <div v-for="(item, index) in 4"
-         :key="index"
-         :class="container4(index)">
+    <div
+      v-for="(item, index) in 4"
+      :key="index"
+      :class="container4(index)"
+    >
       <div :class="wrapper4(index)">
         <div :class="hole4(index)">
           <div class="space-bottom">
 
-            <div class="star-bottom"
-                 v-for="(item, index) in number"
-                 :key="index"></div>
+            <div
+              class="star-bottom"
+              v-for="(item, index) in number"
+              :key="index"
+            ></div>
 
           </div>
           <div class="space-top">
 
-            <div class="star-top"
-                 v-for="(item, index) in number"
-                 :key="index"></div>
+            <div
+              class="star-top"
+              v-for="(item, index) in number"
+              :key="index"
+            ></div>
 
           </div>
           <div class="space-left">
 
-            <div class="star-left"
-                 v-for="(item, index) in number"
-                 :key="index"></div>
+            <div
+              class="star-left"
+              v-for="(item, index) in number"
+              :key="index"
+            ></div>
 
           </div>
           <div class="space-right">
 
-            <div class="star-right"
-                 v-for="(item, index) in number"
-                 :key="index"></div>
+            <div
+              class="star-right"
+              v-for="(item, index) in number"
+              :key="index"
+            ></div>
 
           </div>
         </div>
@@ -125,28 +137,10 @@ export default {
 }
 @keyframes warn {
   0% {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    transform: scale(0);
-    opacity: 1;
-  }
-  25% {
-    border-radius: 50%;
-    opacity: 0.7;
+    opacity: 0;
   }
 
-  40% {
-    opacity: 0.8;
-  }
-  60% {
-    opacity: 0.9;
-  }
-  95% {
-    opacity: 1;
-  }
   100% {
-    transform: scale(1);
     opacity: 1;
   }
 }

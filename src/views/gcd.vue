@@ -504,8 +504,8 @@ nav .menu .menu_icon:hover .icon:after {
     height: 90%;
     top: 5% !important;
     left: 5% !important;
-    min-width: 280px;
-    min-height: 280px;
+    min-width: 200px;
+    min-height: 200px;
   }
 }
 @media screen and (max-height: 660px) {
@@ -651,6 +651,9 @@ nav .menu .menu_icon:hover .icon:after {
   .wrapper .container .circle:before {
     width: 400px;
     height: 400px;
+  }
+  .wrapper .container .text article p {
+    display: none;
   }
 }
 .wrapper .container .one .content:before {

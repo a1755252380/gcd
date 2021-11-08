@@ -24,3 +24,9 @@ border: 8px solid #fff;
     width: 150%;
     border: 13px solid #fff !important;
 }
+@media screen and (max-width:768px) {
+    .checked img{
+        width: 70%;
+        border: 13px solid #fff !important;
+    }
+}

@@ -84,8 +84,10 @@ export default {
     const typedTextSpan = document.querySelector(".typed-text");
     const cursorSpan = document.querySelector(".cursor");
 
-    // const textArray = ["欢迎你们的加入！！", "fun", "a journey", "LIFE"];
-    const textArray = ["欢", "一声歌唱队，一生歌唱队"];
+    const textArray = ["欢"];
+    // const textArray = ["彼此相伴相随，在志同道合的音乐路上，一往无前", "从来都不是简单的唱歌爱好组织", "是可以共享欢乐美好，分担泪汗苦痛，彼此亲同手足般贴心的音乐梦之队", "他更像另一个家"
+    //   , ",时光不老，我们永不散！",
+    //   "一声歌唱队，一生歌唱队"];
     const typingSpeed = 200;
     const erasingSpeed = 100;
     const newTextDelay = 2000; // Delay between current and next text
@@ -316,12 +318,12 @@ export default {
   justify-content: center;
   align-items: center;
   .video {
-    width: 1120px;
-    height: 630px;
+    width: 80%;
+    height: 60%;
   }
   .videoddivshow {
     // width: 1120px;
-    height: 630px;
+    height: 60%;
     animation: videodivshow 3s linear infinite;
   }
 }
@@ -349,7 +351,7 @@ export default {
   }
   50% {
     background-color: transparent;
-    height: 630px;
+    height: 60%;
     width: 0px;
 
     opacity: 1;
@@ -357,8 +359,8 @@ export default {
 
   100% {
     background-color: rgba(255, 255, 255, 0.4);
-    width: 1120px;
-    height: 630px;
+    width: 80%;
+    height: 60%;
     opacity: 1;
   }
 }

@@ -177,7 +177,7 @@
 
         <text
           x="50%"
-          y="70%"
+          y="80%"
           text-anchor="middle"
         >
           GCD歌唱队
@@ -289,7 +289,16 @@ svg text {
   animation: textAnimate 5s infinite alternate;
   text-shadow: 2px 2px #ffa5d8;
 }
-
+@media screen and (max-width: 768px) {
+  svg text {
+    font-size: 55px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  svg text {
+    font-size: 80px;
+  }
+}
 @keyframes textAnimate {
   0% {
     stroke-dasharray: 0 50%;

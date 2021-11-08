@@ -4,7 +4,17 @@
     <!-- <remote-js src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/three.js/72/three.min.js"></remote-js> -->
     <!-- <remote-js src="https://techbrood.com/threejs/build/three.min.js"></remote-js> -->
     <!-- <remote-js src="https://techbrood.com/threejs/examples/js/controls/OrbitControls.js"></remote-js> -->
-    <router-view />
+    <el-row :gutter="10">
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="24"
+        :lg="24"
+        :xl="24"
+      >
+        <router-view />
+      </el-col>
+    </el-row>
     <tabVue class="tab"></tabVue>
   </div>
 </template>
