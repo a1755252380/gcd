@@ -69,8 +69,7 @@ export default {
   mounted () {
     $("#xkback").css("display", "none")
     let that = this
-    $(function () {
-
+    this.$nextTick(function () {
       let wenzidata = ['10行代码15个bug', '头大', '谁写的！！', '哦，好像是我！！', '那没事了，真帅，马上就妥了，稍等...']
       let index = 0
       this.time = setInterval(() => {
@@ -83,7 +82,7 @@ export default {
         }
         index++
       }, 2000);
-    })
+    });
   },
   destroyed () {
     $("#xkback").css("display", "block")

@@ -13,6 +13,7 @@ export default {
     };
   },
   mounted () {
+    $("#xkback").hide()
     if (document.documentElement.clientWidth <= 568) {
       this.big = 115
       this.bigwrite = "G C D"
@@ -32,9 +33,8 @@ export default {
 
       ; (function (main) {
         var args = {};
-        window.onload = function () {
-          main(args);
-        };
+        main(args);
+
       })(function (args) {
 
         'use strict';
@@ -235,10 +235,15 @@ export default {
       });
     });
   },
+  destroyed () {
+    $("#xkback").show()
+  }
 }
 </script>
 <style lang="scss" scoped>
 #c {
+  width: 100%;
+  height: 100%;
   left: 50%;
   position: absolute;
   top: 50%;

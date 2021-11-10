@@ -59,7 +59,9 @@
 export default {
   data () {
     return {
-      number: 12
+      number: 12,
+      time: null,
+      time2: null
     };
   },
   mounted () {
@@ -68,15 +70,18 @@ export default {
     $("body").css("background", "radial-gradient(circle, #390946 0%, #38125b 8%, #14001d 36%, black 100%)");
 
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       $("#pulse").addClass("pulse")
-      setTimeout(() => {
+      window.setTimeout(() => {
         that.$router.push({ path: "/imgshow" })
       }, 5000);
     }, 15000);
   },
   destroyed () {
+    console.log("离开")
     $("body").css("background", "");
+    // this.stopTimer();
+    window.clearTimeout()
   },
   methods: {
 

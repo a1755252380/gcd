@@ -14,8 +14,15 @@ import xkbackVue from '../components/xkback.vue'
 
 // import "../assets/js/a"
 export default {
+  data () {
+    return {
+      time1: null
+    }
+  },
   mounted () {
+    let this_ = this
     $("body").css("overflow", "hidden")
+    let that = this
     this.$nextTick(function () {
       const canvas = document.getElementById("countdown");
       const ctx = canvas.getContext("2d");
@@ -89,8 +96,8 @@ export default {
           texts[textIndex++ % texts.length];
         console.log(textIndex);
         if (textIndex === texts.length + 1) {
-          window.location.href = "http://127.0.0.1:8080/danger";
-          // that.$router.push({ path: "/video" })
+          // window.location.href = "http://www.linan996.xyz:8001/danger";
+          this_.$router.push({ path: "/danger" })
         }
         if (textIndex >= 10) {
           change = true;
@@ -201,9 +208,9 @@ export default {
 
       init();
 
-      let time1 = setInterval(() => {
+      time1 = setInterval(() => {
         if (change) {
-          clearInterval(time1);
+          clearInterval(that.time1);
           cancelAnimationFrame(animFrame);
           // return;
           init();
@@ -231,6 +238,7 @@ export default {
   },
   destroyed () {
     $("body").css("overflow", "")
+    clearInterval(this.time1)
   },
   components: {
     // xkbackVue

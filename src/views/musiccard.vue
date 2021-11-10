@@ -1,5 +1,11 @@
 <template>
   <div class="cards">
+    <el-button
+      type="warning"
+      class="next"
+      plain
+      @click="jumprouter"
+    >→</el-button>
     <h1 style="color:#fff">听 歌 猜 曲</h1>
     <ul class="shadows">
       <li></li>
@@ -148,6 +154,9 @@ export default {
     $("#xkback").css("display", "block")
   },
   methods: {
+    jumprouter () {
+      this.$router.push({ path: "/Introduction/2" })
+    },
     bgmPlay (index) {
       var bgm = document.getElementById("player_audio" + index);
       if (bgm !== null) {
@@ -234,9 +243,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.next {
+  position: absolute;
+  right: 2%;
+  top: 45%;
+  width: 70px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
 //背景
 .drive,
 .shadows {
+  z-index: -1;
   position: fixed;
   top: 0;
   right: 0;
@@ -443,7 +463,7 @@ div.cards {
   text-align: center;
 }
 div.card {
-  background: #ffffff;
+  background: #e7dfdf;
   display: inline-block;
   margin: 8px;
   max-width: 300px;
@@ -464,7 +484,7 @@ div.card .card__image-holder {
   padding-bottom: 83%;
 }
 div.card div.card-title {
-  background: #ffffff;
+  background: #e7dfdf;
   padding: 6px 15px 10px;
   position: relative;
   z-index: 0;
@@ -479,7 +499,7 @@ div.card div.card-title a.toggle-info {
   width: 32px;
 }
 div.card div.card-title a.toggle-info span {
-  background: #ffffff;
+  background: #e7dfdf;
   display: block;
   height: 2px;
   position: absolute;
@@ -559,7 +579,7 @@ div.card.show div.card-title a.toggle-info span.right {
   left: 10px;
 }
 div.card.show div.card-flap {
-  background: #ffffff;
+  background: #e7dfdf;
   transform: rotateX(0deg);
 }
 div.card.show div.flap1 {

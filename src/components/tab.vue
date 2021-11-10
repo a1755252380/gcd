@@ -1,123 +1,285 @@
 <template>
   <div class="navbody">
-    <div class="nav">
-      <input type="checkbox">
-      <span></span>
-      <span></span>
-      <div class="menu">
-
-        <li>
-          <router-link to="/begin">开始</router-link>
-        </li>
-        <li>
-          <router-link to="">倒计时</router-link>
-        </li>
-        <li>
-          <router-link to="/Tunnel">照片</router-link>
-        </li>
-        <li>
-          <router-link to="/video">视频</router-link>
-        </li>
-        <li>
-          <router-link to="/musiccard">游戏</router-link>
-        </li>
+    <nav>
+      <div class="menu-btn">
+        <div class="line line--1"></div>
+        <div class="line line--2"></div>
+        <div class="line line--3"></div>
       </div>
-    </div>
+
+      <div class="nav-links">
+        <el-menu
+          style=" padding-top: 50px;"
+          default-active="2"
+          class="el-menu-vertical-demo"
+          :router="true"
+        >
+          <el-submenu index="1">
+            <template slot="title">
+              <span>GCD logo</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item
+                index="/begin"
+                @click="tabclick"
+              >开始LOGO(小猫悬挂)</el-menu-item>
+              <el-menu-item
+                index="/gcd"
+                @click="tabclick"
+              >蓝色GCD</el-menu-item>
+              <el-menu-item
+                index="/cicle"
+                @click="tabclick"
+              >立体旋转</el-menu-item>
+              <el-menu-item
+                index="/Introduction/2"
+                @click="tabclick"
+              >霓虹灯logo</el-menu-item>
+
+              <el-menu-item
+                index="/endgcd"
+                @click="tabclick"
+              >结束GCD</el-menu-item>
+            </el-menu-item-group>
+
+          </el-submenu>
+          <el-menu-item
+            index="/begin"
+            @click="tabclick"
+          >
+            <span slot="title">开始</span>
+          </el-menu-item>
+          <el-menu-item
+            index="/countdown"
+            @click="tabclick"
+          >
+            <span slot="title">倒计时</span>
+          </el-menu-item>
+          <el-menu-item
+            index="/video"
+            @click="tabclick"
+          >
+            <span slot="title">视频</span>
+          </el-menu-item>
+          <el-menu-item
+            index="/Tunnel"
+            @click="tabclick"
+          >
+            <span slot="title">照片隧道</span>
+          </el-menu-item>
+          <el-menu-item
+            index="/imgshow"
+            @click="tabclick"
+          >
+            <span slot="title">图片展示</span>
+          </el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">
+              <span>游戏</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item
+                index="/musiccard"
+                @click="tabclick"
+              >听歌识曲</el-menu-item>
+              <el-menu-item
+                index="/play2/2"
+                @click="tabclick"
+              >心有灵犀</el-menu-item>
+              <el-menu-item
+                index="/play2/3"
+                @click="tabclick"
+              >正歌反说</el-menu-item>
+
+            </el-menu-item-group>
+            <el-menu-item
+              index="/endgcd"
+              @click="tabclick"
+            >
+              <span slot="title">结束展示</span>
+            </el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </div>
+    </nav>
+
   </div>
 
 </template>
 <script>
 export default {
-
+  mounted () {
+    this.$nextTick(function () {
+      var menuBtn = document.querySelector('.menu-btn');
+      var nav = document.querySelector('nav');
+      var lineOne = document.querySelector('nav .menu-btn .line--1');
+      var lineTwo = document.querySelector('nav .menu-btn .line--2');
+      var lineThree = document.querySelector('nav .menu-btn .line--3');
+      var link = document.querySelector('nav .nav-links');
+      menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+        lineOne.classList.toggle('line-cross');
+        lineTwo.classList.toggle('line-fade-out');
+        lineThree.classList.toggle('line-cross');
+        link.classList.toggle('fade-in');
+      })
+    });
+  },
+  methods: {
+    tabclick () {
+      var nav = document.querySelector('nav');
+      var lineOne = document.querySelector('nav .menu-btn .line--1');
+      var lineTwo = document.querySelector('nav .menu-btn .line--2');
+      var lineThree = document.querySelector('nav .menu-btn .line--3');
+      var link = document.querySelector('nav .nav-links');
+      nav.classList.toggle('nav-open');
+      lineOne.classList.toggle('line-cross');
+      lineTwo.classList.toggle('line-fade-out');
+      lineThree.classList.toggle('line-cross');
+      link.classList.toggle('fade-in');
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
-.navbody,
-.nav,
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/deep/.el-menu {
+  width: 100%;
+  height: 100%;
 }
-.nav {
-  position: relative;
 
-  background-color: rgba(189, 184, 184, 0.2);
-  padding: 20px;
-  transition: 0.5s;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-.nav:hover {
-  background: #fff;
-}
-.nav:visited {
-  background: #fff;
-}
-.menu {
-  margin: 0;
-  padding: 0;
+//
+.navbody {
+  height: 100%;
   width: 0;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+nav {
   overflow: hidden;
-  transition: 0.5s;
+  position: relative;
+  transform: translateX(-300px);
+  height: 100%;
+  width: 400px;
+  transition: all 800ms cubic-bezier(0.8, 0, 0.33, 1);
+  border-radius: 0% 0% 100% 50%;
 }
 
-.nav input:checked ~ .menu {
-  width: 450px;
+nav.nav-open {
+  transform: translateX(0px);
+  border-radius: 0% 0% 0% 0%;
+  background: rgba(255, 255, 255, 0.6);
 }
 
-.menu li {
-  list-style: none;
-  margin: 0 10px;
-}
-
-.menu li a {
-  text-decoration: none;
-  color: #666;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: 0.5s;
-}
-
-.menu li a:hover {
-  color: #161919;
-}
-
-.nav input {
-  width: 40px;
-  height: 40px;
+nav .menu-btn {
+  position: fixed;
+  top: 1%;
+  right: 3%;
+  padding: 0;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+  z-index: 99999;
+}
+
+nav .menu-btn .line {
+  padding: 0;
+  width: 30px;
+  background: #fff;
+  height: 2px;
+  margin: 5px 0;
+  transition: all 700ms cubic-bezier(0.9, 0, 0.33, 1);
+}
+
+nav .menu-btn .line.line--1 {
+  width: 30px;
+  transform: rotate(0) translateY(0);
+}
+
+nav .menu-btn .line.line--1.line-cross {
+  width: 30px;
+  transform: rotate(45deg) translateY(10px);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+nav .menu-btn .line.line--2 {
+  width: 28px;
+  transform: translateX(0);
+}
+
+nav .menu-btn .line.line--2.line-fade-out {
+  width: 28px;
+  transform: translate(30px);
   opacity: 0;
 }
 
-.nav span {
-  position: absolute;
-  left: 30px;
+nav .menu-btn .line.line--3 {
+  width: 20px;
+  transform: rotate(0) translateY(0);
+}
+
+nav .menu-btn .line.line--3.line-cross {
   width: 30px;
-  height: 4px;
-  border-radius: 50px;
-  background-color: #666;
-  pointer-events: none;
-  transition: 0.5s;
+  transform: rotate(-45deg) translateY(-10px);
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.nav input:checked ~ span {
-  background-color: #f974a1;
+nav .nav-links {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: all 900ms cubic-bezier(0.9, 0, 0.33, 1);
 }
 
-.nav span:nth-child(2) {
-  transform: translateY(-8px);
+nav .nav-links.fade-in {
+  opacity: 1;
+  transform: translateX(0px);
 }
 
-.nav input:checked ~ span:nth-child(2) {
-  transform: translateY(0) rotate(-45deg);
-}
-.nav span:nth-child(3) {
-  transform: translateY(8px);
+nav .nav-links .link {
+  margin: 20px 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  transition: all 300ms cubic-bezier(0.9, 0, 0.33, 1);
 }
 
-.nav input:checked ~ span:nth-child(3) {
-  transform: translateY(0) rotate(45deg);
+nav .nav-links .link:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.inform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+a {
+  margin: 0 20px;
+  color: #fff;
+  font-size: 2rem;
+  transition: all 400ms ease;
+}
+
+a:hover {
+  color: #222;
 }
 </style>

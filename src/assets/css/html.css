@@ -7,3 +7,23 @@
     position: relative;
 
 }
+/*修改某个body的滚动条样式*/
+body::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+    /**/
+  }
+  body::-webkit-scrollbar-track{
+    background: #fff;
+    border-radius:2px;
+  }
+  body::-webkit-scrollbar-thumb{
+    background: rgb(138, 136, 136);
+    border-radius:10px;
+  }
+  body::-webkit-scrollbar-thumb:hover{
+    background: rgb(138, 136, 136);
+  }
+  body::-webkit-scrollbar-corner{
+    background: #204754;
+  }

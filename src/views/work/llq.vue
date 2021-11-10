@@ -59,15 +59,18 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 100%;
 }
 .window {
   border-radius: 3px;
   background: #222;
   color: #fff;
   overflow: hidden;
-  position: relative;
-  height: 800px;
-  width: 70%;
+  position: absolute;
+  bottom: 0;
+  height: 80%;
+  width: 30%;
+  min-width: 300px;
 }
 .window:before {
   content: " ";

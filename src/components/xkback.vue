@@ -201,9 +201,11 @@ export default {
 <style lang="scss" scoped>
 //背景
 .container {
-  position: fixed;
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
   background-image: radial-gradient(
     1600px at 70% 120%,
     rgba(33, 39, 80, 1) 10%,
@@ -228,7 +230,7 @@ export default {
   width: 100%;
   position: fixed;
   bottom: 0px;
-  padding: 20px;
+  // padding: 20px;
   text-align: center;
   z-index: 20;
 }

@@ -3,7 +3,41 @@
     <div
       id="over"
       class="overdiv"
-    ></div>
+    >
+      <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+          <text
+            text-anchor="middle"
+            x="50%"
+            y="80%"
+          >GCD歌唱队</text>
+        </symbol>
+
+        <g class="g-ants">
+          <use
+            xlink:href="#s-text"
+            class="text"
+          ></use>
+          <use
+            xlink:href="#s-text"
+            class="text"
+          ></use>
+          <use
+            xlink:href="#s-text"
+            class="text"
+          ></use>
+          <use
+            xlink:href="#s-text"
+            class="text"
+          ></use>
+          <use
+            xlink:href="#s-text"
+            class="text"
+          ></use>
+        </g>
+      </svg>
+
+    </div>
     <!-- <xkbackVue></xkbackVue> -->
     <div
       class="container2"
@@ -318,12 +352,12 @@ export default {
   justify-content: center;
   align-items: center;
   .video {
-    width: 80%;
-    height: 60%;
+    width: 1120px;
+    height: 628px;
   }
   .videoddivshow {
-    // width: 1120px;
-    height: 60%;
+    width: 1120px;
+    height: 628px;
     animation: videodivshow 3s linear infinite;
   }
 }
@@ -351,7 +385,7 @@ export default {
   }
   50% {
     background-color: transparent;
-    height: 60%;
+    height: 628px;
     width: 0px;
 
     opacity: 1;
@@ -359,8 +393,8 @@ export default {
 
   100% {
     background-color: rgba(255, 255, 255, 0.4);
-    width: 80%;
-    height: 60%;
+    width: 1120px;
+    height: 628px;
     opacity: 1;
   }
 }
