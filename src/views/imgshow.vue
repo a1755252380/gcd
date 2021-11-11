@@ -60,16 +60,17 @@
 export default {
   data () {
     return {
-      imgdata: [],
+      imgdata: this.$store.getters.getimgshowdata,
       bodyimg: require('../assets/img/a.jpg'),
       imgdata2: [require("../assets/img/cc.jpg")]
     };
   },
   mounted () {
     $("#xkback").css("display", "none")
-    for (var i = 1; i < 25; i++) {
-      this.imgdata.push(require("../assets/img/img/" + i + ".png"))
-    }
+    // for (var i = 1; i < 25; i++) {
+    //   this.imgdata.push(require("../assets/img/img/" + i + ".png"))
+    //   console.log()
+    // }
     $("#app").css("position", 'relative')
     $("body").css("background", "url('" + this.bodyimg + "')")
     //获取事件源

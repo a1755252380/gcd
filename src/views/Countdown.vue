@@ -21,19 +21,19 @@ export default {
   },
   mounted () {
     let this_ = this
-    $("body").css("overflow", "hidden")
+    // $("body").css("overflow", "hidden")
     let that = this
     this.$nextTick(function () {
       const canvas = document.getElementById("countdown");
       const ctx = canvas.getContext("2d");
-      const layers = 6;
+      const layers = 5;
       let size = 0;
       let particles = [];
       let targets = [];
       let target;
       const lerp = (t, v0, v1) => (1 - t) * v0 + t * v1;
       const fov = 3000; //层数之间相隔的距离
-      const viewDistance = 300;
+      const viewDistance = 250;
       let targetRotationY = 0.5;
       let rotationY = 0.5;
       let speed = 200; //渲染速度
@@ -94,10 +94,12 @@ export default {
         const text =
           //   document.getElementById("textInput").value ||
           texts[textIndex++ % texts.length];
-        console.log(textIndex);
+        // console.log(textIndex);
         if (textIndex === texts.length + 1) {
+
           // window.location.href = "http://www.linan996.xyz:8001/danger";
           this_.$router.push({ path: "/danger" })
+          return
         }
         if (textIndex >= 10) {
           change = true;
@@ -208,7 +210,7 @@ export default {
 
       init();
 
-      time1 = setInterval(() => {
+      that.time1 = setInterval(() => {
         if (change) {
           clearInterval(that.time1);
           cancelAnimationFrame(animFrame);
@@ -237,7 +239,6 @@ export default {
     });
   },
   destroyed () {
-    $("body").css("overflow", "")
     clearInterval(this.time1)
   },
   components: {

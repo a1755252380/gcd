@@ -92,13 +92,14 @@
               >正歌反说</el-menu-item>
 
             </el-menu-item-group>
-            <el-menu-item
-              index="/endgcd"
-              @click="tabclick"
-            >
-              <span slot="title">结束展示</span>
-            </el-menu-item>
+
           </el-submenu>
+          <el-menu-item
+            index="/endgcd"
+            @click="tabclick"
+          >
+            <span slot="title">结束展示</span>
+          </el-menu-item>
         </el-menu>
       </div>
     </nav>
@@ -153,16 +154,20 @@ export default {
   width: 0;
   position: absolute;
   top: 0;
-  z-index: 0;
+  z-index: 999999999;
 }
 nav {
   overflow: hidden;
   position: relative;
-  transform: translateX(-300px);
+  transform: translateX(-230px);
   height: 100%;
-  width: 400px;
+  width: 300px;
   transition: all 800ms cubic-bezier(0.8, 0, 0.33, 1);
   border-radius: 0% 0% 100% 50%;
+  li {
+    font-size: 15px;
+    font-weight: 700;
+  }
 }
 
 nav.nav-open {

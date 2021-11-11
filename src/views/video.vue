@@ -4,40 +4,9 @@
       id="over"
       class="overdiv"
     >
-      <svg viewBox="0 0 960 300">
-        <symbol id="s-text">
-          <text
-            text-anchor="middle"
-            x="50%"
-            y="80%"
-          >GCD歌唱队</text>
-        </symbol>
-
-        <g class="g-ants">
-          <use
-            xlink:href="#s-text"
-            class="text"
-          ></use>
-          <use
-            xlink:href="#s-text"
-            class="text"
-          ></use>
-          <use
-            xlink:href="#s-text"
-            class="text"
-          ></use>
-          <use
-            xlink:href="#s-text"
-            class="text"
-          ></use>
-          <use
-            xlink:href="#s-text"
-            class="text"
-          ></use>
-        </g>
-      </svg>
 
     </div>
+
     <!-- <xkbackVue></xkbackVue> -->
     <div
       class="container2"
@@ -46,25 +15,47 @@
       <p><span id="gcd">G C D </span><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
     </div>
     <div
-      class="video card videoddivshow"
       v-else
-      id="video"
+      style="width：100%:height:100%"
     >
-      <video-player
-        class="video-player vjs-custom-skin  "
-        ref="videoPlayer"
-        :playsinline="true"
-        :options="playerOptions"
-      />
       <div
-        class="cont"
-        @click="overbtn"
+        v-if="!small"
+        class="video card videoddivshow"
+        id="video"
       >
-        <a class="element">
-          →
-        </a>
-      </div>
+        <video-player
+          class="video-player vjs-custom-skin  "
+          ref="videoPlayer"
+          :playsinline="true"
+          :options="playerOptions"
+        />
+        <div
+          class="cont"
+          @click="overbtn"
+        >
+          <a class="element">
+            →
+          </a>
+        </div>
 
+      </div>
+      <!-- 小屏幕适配 -->
+      <div
+        class="small"
+        v-else
+      >
+        由于屏幕分辨率太小，视频展示模块无法显示，请点击按钮跳转，谢谢！！<br>
+        <div
+          class="item button-pulse next"
+          style="--bg-color: #1B2042"
+          @click=" overbtn"
+        >
+          <div class="button__wrapper">
+            <div class="pulsing"></div>
+            <button>下下一个!</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -96,7 +87,7 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: "video/mp4",// 这里的种类支持很多种：基本视频格式、直播、流媒体等，具体可以参看git网址项目
-          src: require("../assets/img/b.mp4") // url地址
+          src: this.$store.getters.getvideodata // url地址
         }],
         poster: "", // 你的封面地址
         notSupportedMessage: '此视频暂无法播放，请稍后再试', // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
@@ -106,7 +97,8 @@ export default {
           remainingTimeDisplay: false,
           fullscreenToggle: true  // 全屏按钮
         }
-      }
+      },
+      small: false
     }
   },
   components: {
@@ -114,14 +106,19 @@ export default {
     // xkbackVue 
   },
   mounted () {
+    if (document.documentElement.clientWidth < 1130) {
+      this.small = true
+    } else {
+      this.small = false
+    }
     //打字
     const typedTextSpan = document.querySelector(".typed-text");
     const cursorSpan = document.querySelector(".cursor");
 
-    const textArray = ["欢"];
-    // const textArray = ["彼此相伴相随，在志同道合的音乐路上，一往无前", "从来都不是简单的唱歌爱好组织", "是可以共享欢乐美好，分担泪汗苦痛，彼此亲同手足般贴心的音乐梦之队", "他更像另一个家"
-    //   , ",时光不老，我们永不散！",
-    //   "一声歌唱队，一生歌唱队"];
+    // const textArray = ["欢"];
+    const textArray = ["彼此相伴相随，在志同道合的音乐路上，一往无前", "从来都不是简单的唱歌爱好组织", "是可以共享欢乐美好，分担泪汗苦痛，彼此亲同手足般贴心的音乐梦之队", "他更像另一个家"
+      , ",时光不老，我们永不散！",
+      "一声歌唱队，一生歌唱队"];
     const typingSpeed = 200;
     const erasingSpeed = 100;
     const newTextDelay = 2000; // Delay between current and next text
@@ -148,10 +145,7 @@ export default {
     function erase () {
       if (end < textArray.length) {
         console.log(end);
-        if (end == textArray.length - 1) {
-          $("#gcd").hide()
-          $(".typed-text").css("font-size", "95px")
-        }
+
       }
 
       else {
@@ -178,6 +172,10 @@ export default {
           charIndex - 1
         );
         charIndex--;
+        if (end == textArray.length - 1 && charIndex == 0) {
+          $("#gcd").hide()
+          $(".typed-text").css("font-size", "95px")
+        }
         setTimeout(erase, erasingSpeed);
       } else {
         cursorSpan.classList.remove("typing");
@@ -204,6 +202,19 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import url("../assets/css/icon.css");
+.small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2rem;
+  padding: 10px;
+  .next {
+    position: absolute;
+    bottom: 25%;
+  }
+}
 /deep/.vjs-custom-skin > .video-js .vjs-big-play-button {
   display: none;
 }

@@ -147,10 +147,12 @@ export default {
   },
   mounted () {
     $("body").css("background", "#032b39")
+    $("body").css("overflow", "scroll")
     $("#xkback").css("display", "none")
   },
   beforeDestroy () {
     $("body").css("background", "")
+    $("body").css("overflow", "hidden")
     $("#xkback").css("display", "block")
   },
   methods: {
@@ -244,7 +246,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .next {
-  position: absolute;
+  position: fixed;
   right: 2%;
   top: 45%;
   width: 70px;
@@ -252,6 +254,7 @@ export default {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
+  z-index: 9;
 }
 //背景
 .drive,
@@ -590,7 +593,7 @@ div.card.show div.flap2 {
 }
 
 //播放器
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
 button {
   border: none;

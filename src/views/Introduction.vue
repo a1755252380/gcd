@@ -1,6 +1,9 @@
 <template>
   <div class="Introduction_body">
-    <svg viewBox="0 0 1240 300">
+    <svg
+      viewBox="0 0 1240 300"
+      class="introduction_svg"
+    >
       <symbol id="s-text">
         <text
           text-anchor="middle"
@@ -58,6 +61,13 @@ export default {
 
     }
   },
+  mounted () {
+    if (document.documentElement.clientWidth < 768) {
+      $(".introduction_svg").css("margin-top", "45%")
+    } else {
+      $(".introduction_svg").css("margin-top", "0")
+    }
+  },
   computed: {
     jump: {
       get () {
@@ -75,8 +85,8 @@ export default {
 svg {
   display: block;
   font: 10.5em "Monoton";
-  width: 1240px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
 

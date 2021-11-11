@@ -73,7 +73,13 @@ export default {
       return this.$route.params.type
     }
 
-  }
+  },
+  mounted () {
+    if (document.documentElement.clientWidth < 768) {
+      $(".play2_div h1").css("padding", "0")
+      $(".play2_div p").css("font-size", "1rem")
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -88,11 +94,11 @@ export default {
     width: 50%;
     text-align: center;
     h1 {
-      font-size: 70px;
+      font-size: 4rem;
       padding: 40px 50px;
     }
     p {
-      font-size: 30px;
+      font-size: 2rem;
     }
   }
 }

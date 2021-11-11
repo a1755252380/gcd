@@ -1,5 +1,6 @@
 <template>
   <div
+    class="cicle_body"
     style=""
     @click="click"
   >
@@ -65,6 +66,10 @@ import 'three-orbitcontrols'
 export default {
   mounted () {
     $("body").css('background', "#333")
+    $("#app").css('overflow', "hidden")
+    if (document.documentElement.clientWidth < 768) {
+      $(".cicle_body").css("left", "1%")
+    }
     this.$nextTick(function () {
       var scene, renderer, camera, orbitcontrols;
       var earthBall;//地球实体
@@ -150,6 +155,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.cicle_body {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+}
 //本体
 .scene {
   position: absolute;

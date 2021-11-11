@@ -23,33 +23,43 @@ import tunnelbackgroundVue from './tunnel_background.vue';
 export default {
   data () {
     return {
-      imgdata: [require('../assets/img/2019/1.jpg'),
-      require('../assets/img/2019/2.jpg'),
-      require('../assets/img/2019/3.jpg'),
-      require('../assets/img/2019/4.jpg'),
-      require('../assets/img/2019/5.jpg'),
-      require('../assets/img/2019/6.jpg'),
-      require('../assets/img/2019/7.jpg'),
-      require('../assets/img/2019/8.jpg'),
-      require('../assets/img/2019/9.jpg'),
-      require('../assets/img/2019/10.jpg'),
-      require('../assets/img/2019/11.jpg'),
-      require('../assets/img/2019/12.jpg'),
-      require('../assets/img/2019/13.jpg'),
-      require('../assets/img/2019/14.jpg'),
-      ],
-      timers: null
+
+      timers: null,
+      time: null,
+      time2: null,
+      time3: null,
+      swiper: null,
     };
+  },
+  computed: {
+    imgdata () {
+      return this.$store.getters.gettunnelimg
+    }
   },
   components: { tunnelbackgroundVue },
   destroyed () {
     $("#xkback").css("display", "block")
     clearInterval(this.timers)
+    if (this.time) {
+      console.log("清除")
+      console.log(this.time)
+      clearTimeout(this.time)
+    }
+    if (this.time2) {
+      clearTimeout(this.time2)
+    }
+    if (this.time3) {
+      clearTimeout(this.time3)
+    }
+    $(".item").css("transform", " translateZ(-8000px)");
+
   },
+
   mounted () {
+    let that = this
     $("#xkback").css("display", "none")
     this.$nextTick(() => {
-      let swiper = new Swiper(".swiper-container", {
+      this.swiper = new Swiper(".swiper-container", {
         direction: "horizontal", // 垂直切换选项
         loop: true, // 循环模式选项
         speed: 1
@@ -68,7 +78,7 @@ export default {
           opacity: 1,
           "z-index": 99
         });
-        $(".ct").hide();
+
       });
 
       $(".swiper-button-prev").on("click", function () {
@@ -89,6 +99,14 @@ export default {
           "z-index": -1
         });
       });
+      that.$forceUpdate();
+      that.time = setTimeout(() => {
+        $("#pulse").addClass("pulse")
+        that.time2 = setTimeout(() => {
+          $("#pulse").removeClass("pulse");
+          that.$router.push({ path: "/imgshow" })
+        }, 5000);
+      }, 15000);
     });
 
 
@@ -102,41 +120,41 @@ export default {
         if (i % 4 == 0) {
           $(".item")
             .eq(i)
-            .css("top", -Number(Math.floor(Math.random() * 1000) + 200) + "px");
+            .css("top", -Number(Math.floor(Math.random() * 1000) + 300) + "px");
           $(".item")
             .eq(i)
-            .css("left", -Number(Math.floor(Math.random() * 2000) - 100) + "px");
+            .css("left", -Number(Math.floor(Math.random() * 2000) - 200) + "px");
         } else if (i % 4 == 1) {
           $(".item")
             .eq(i)
-            .css("top", -Number(Math.floor(Math.random() * 1000) + 200) + "px");
+            .css("top", -Number(Math.floor(Math.random() * 1000) + 300) + "px");
           $(".item")
             .eq(i)
-            .css("left", Number(Math.floor(Math.random() * 2000) - 100) + "px");
+            .css("left", Number(Math.floor(Math.random() * 2000) - 200) + "px");
         } else if (i % 4 == 2) {
           $(".item")
             .eq(i)
-            .css("top", Number(Math.floor(Math.random() * 1000) + 200) + "px");
+            .css("top", Number(Math.floor(Math.random() * 1000) + 300) + "px");
           $(".item")
             .eq(i)
-            .css("left", -Number(Math.floor(Math.random() * 2000) - 100) + "px");
+            .css("left", -Number(Math.floor(Math.random() * 2000) - 200) + "px");
         } else {
           $(".item")
             .eq(i)
-            .css("top", Number(Math.floor(Math.random() * 1000) + 200) + "px");
+            .css("top", Number(Math.floor(Math.random() * 1000) + 300) + "px");
           $(".item")
             .eq(i)
-            .css("left", Number(Math.floor(Math.random() * 2000) - 100) + "px");
+            .css("left", Number(Math.floor(Math.random() * 2000) - 200) + "px");
         }
         $(".item")
           .eq(i)
-          .attr("data-z", -10000);
+          .attr("data-z", -8000);
         let delay = Math.floor(Math.random() * 10000);
 
-        setTimeout(function () {
+        this.time3 = setTimeout(function () {
 
-
-          let Z = ~~$(".item")
+          let Z = 0
+          Z = ~~$(".item")
             .eq(i)
             .attr("data-z");
           this.timers = setInterval(function () {
@@ -152,15 +170,16 @@ export default {
                 .css("opacity", 0);
             }
             if (Z >= 1000) {
-              Z = -10000;
+              Z = -8000;
             }
             $(".item")
               .eq(i)
               .css("transform", " translateZ(" + Z + "px)");
-            Z += 30;
-          }, 5);
+            Z += 40;
+          }, 10);
         }, delay);
       }
+
     }
   },
 
@@ -176,7 +195,7 @@ export default {
   background: #fff;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
-  z-index: 9999;
+  z-index: 99;
   opacity: 0;
   -webkit-animation: warn 5s ease-out;
   -moz-animation: warn 5s ease-out;

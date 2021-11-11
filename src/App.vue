@@ -26,9 +26,10 @@
 
 import tabVue from './components/tab.vue'
 import xkbackVue from './components/xkback.vue'
+
 export default {
   components: {
-    tabVue, xkbackVue,
+    tabVue, xkbackVue
     // 'remote-js': {
     //   render (createElement) {
     //     return createElement('script', { attrs: { type: 'text/javascript', src: this.src } });

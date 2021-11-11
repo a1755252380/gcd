@@ -15,6 +15,11 @@ const routes = [
     component: () => import("../views/play2.vue")
   },
   {
+    path: "/loading",
+
+    component: () => import("../views/loading.vue")
+  },
+  {
     path: "/Introduction/:type2",
 
     component: () => import("../views/Introduction.vue")
