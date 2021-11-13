@@ -92,20 +92,30 @@
                 class="btn play"
                 :id="getplay(index)"
                 @click="bgmPlay(index)"
+                title="暂停"
               ></button>
-              <button class="btn"></button>
+              <button
+                class="btn"
+                @click="bgmdel(index)"
+                title="后退10秒"
+              ></button>
               <button
                 @click="bgmStop(index)"
+                title="停止"
                 class="btn"
               ></button>
-              <button class="btn"></button>
+              <button
+                class="btn"
+                @click="bgmadd(index)"
+                title="前进10秒"
+              ></button>
             </div>
           </div>
 
         </section>
         <audio
           :id='getplayer_audio(index)'
-          src='https://www.jq22.com/demo/jqueryaudio201903252328/jq22.mp3'
+          :src='item.mp3'
           type="audio/mp3"
         ></audio>
 
@@ -121,13 +131,13 @@
           <span class="right"></span>
         </a>
         <h2>
-          NO.{{index}}
+          NO.{{index|index}}
           <small>&nbsp;</small>
         </h2>
       </div>
       <div class="card-flap flap1">
         <div class="card-description">
-          This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+          {{item.name}}
         </div>
 
       </div>
@@ -142,7 +152,17 @@ export default {
     return {
       zindex: 10,
       isShowing: false,
-      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      data: [{ name: "指纹-杜宣达", mp3: "https://sharefs.ali.kugou.com/202111132010/a67c3b302f54bdd9f2a111d2cc584fac/KGTX/CLTX001/eaf4cb91da618dbedc751f54b3b3620d.mp3" },
+      { name: "爱情悬崖-周杰伦", mp3: "https://sharefs.ali.kugou.com/202111132014/31cebb740e8d6895647f24f7096542e4/KGTX/CLTX001/198c5681643fa5a3bdd63674292ffabe.mp3" },
+      { name: "百年孤寂-苏玮", mp3: "https://sharefs.ali.kugou.com/202111132015/f928220def8f832a61031689b3b49117/KGTX/CLTX001/e024409e9306fbdcff2f711ecdd747d2.mp3" },
+      { name: "漠河舞厅 - 柳爽", mp3: "https://sharefs.ali.kugou.com/202111132017/23bafe1d8627ff5294b4ebd0c46eb807/KGTX/CLTX001/07da76aa7f701c3c2f2449e2a532ec2f.mp3" },
+      { name: "错位时空 - 艾辰", mp3: "https://sharefs.ali.kugou.com/202111132006/0903fe3a2e2540e46c99f344ee2762f8/KGTX/CLTX001/c4b7581b21792781fb315cba90c5de85.mp3" },
+      { name: "最冷一天 - 陈奕迅", mp3: "https://sharefs.ali.kugou.com/202111132022/a3d175946293b2f587630131e9b41b88/KGTX/CLTX001/9381d83b7b841d22cc115605528878a3.mp3" },
+      { name: "几个你 - 薛之谦", mp3: "https://sharefs.ali.kugou.com/202111132024/bd15376580b05d74f76c93e3c5efd973/KGTX/CLTX001/989b5b4cabb82d588401f636659704a0.mp3" },
+      { name: "孤勇者 - 陈奕迅", mp3: "https://sharefs.ali.kugou.com/202111132021/18707c69941377f85596ee447e80b8ee/KGTX/CLTX001/f2e7e2ea86744b6511963a069c7ccb19.mp3" },
+      { name: "不可阻挡 (Burn It All Down) - 英雄联盟", mp3: "https://sharefs.ali.kugou.com/202111132012/ee8245488fba5a32d64a4af34e05bea1/KGTX/CLTX001/9475e59c8e2464eb71ca138b8b344b64.mp3" },
+      { name: "路过人间 - 郁可唯", mp3: "https://sharefs.ali.kugou.com/202111132018/6386370037df87b08084208885641fa3/G155/M03/0E/05/O4cBAFzxAd2AW-RqADwN1QPirMQ238.mp3" },
+      ]
     };
   },
   mounted () {
@@ -155,7 +175,13 @@ export default {
     $("body").css("overflow", "hidden")
     $("#xkback").css("display", "block")
   },
+  filters: {
+    index (index) {
+      return index + 1
+    },
+  },
   methods: {
+
     jumprouter () {
       this.$router.push({ path: "/Introduction/2" })
     },
@@ -186,6 +212,16 @@ export default {
       $("#play" + index).removeClass("active");
       //   $("#stop" + index).addClass("active");
       $(".cog-img" + index).removeClass("rotating");
+    },
+    bgmadd (index) {
+      var bgm = document.getElementById("player_audio" + index);
+      bgm.currentTime = bgm.currentTime + 10;
+
+    },
+    bgmdel (index) {
+      var bgm = document.getElementById("player_audio" + index);
+      bgm.currentTime = bgm.currentTime - 10;
+
     },
     divclick (index, e) {
       console.log(index);
@@ -534,7 +570,10 @@ div.card div.card-title h2 small {
 div.card div.card-description {
   padding: 0 15px 10px;
   position: relative;
-  font-size: 14px;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+  color: #f10b31;
 }
 div.card div.card-actions {
   box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);

@@ -200,7 +200,7 @@ export default {
   mounted () {
     $("#xkback").css("display", "none")
     $("body").css("background", "radial-gradient(1600px at 70% 120%,rgba(33, 39, 80, 1) 10%, #020409 100%)")
-    $("body").css("overflow", "hidden")
+
 
     document.getElementById("end").addEventListener("resize", function () {
       console.log(document.getElementById("end").offsetHeight)
@@ -224,7 +224,6 @@ export default {
   },
   destroyed () {
     $("body").css("background", "")
-    $("body").css("overflow", "")
     $("#xkback").css("display", "block")
     clearInterval(this.time)
   },

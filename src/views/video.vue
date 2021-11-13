@@ -116,7 +116,7 @@ export default {
     const cursorSpan = document.querySelector(".cursor");
 
     // const textArray = ["欢"];
-    const textArray = ["彼此相伴相随，在志同道合的音乐路上，一往无前", "从来都不是简单的唱歌爱好组织", "是可以共享欢乐美好，分担泪汗苦痛，彼此亲同手足般贴心的音乐梦之队", "他更像另一个家"
+    const textArray = ["我们，彼此相伴相随，在志同道合的音乐路上，一往无前", "从来都不是简单的唱歌爱好组织", "是可以共享欢乐美好，分担泪汗苦痛，彼此亲同手足般贴心的音乐梦之队", "他更像另一个家"
       , ",时光不老，我们永不散！",
       "一声歌唱队，一生歌唱队"];
     const typingSpeed = 200;
@@ -151,16 +151,17 @@ export default {
       else {
         console.log("打完了");
 
-        that.videshow = !that.videshow
+        // that.videshow = !that.videshow
 
         setTimeout(() => {
+          that.$router.push({ path: "/Tunnel" })
           // $("#video").addClass("video");
           // $(".vjs-big-play-button").css("display", "block")
-          $(".videoddivshow").removeClass("videoddivshow");
-          $(".cont").addClass("contshow");
-          setTimeout(() => {
-            $(".cont").css("opacity", "1")
-          }, 3000);
+          // $(".videoddivshow").removeClass("videoddivshow");
+          // $(".cont").addClass("contshow");
+          // setTimeout(() => {
+          //   $(".cont").css("opacity", "1")
+          // }, 3000);
         }, 3000);
         return;
       }

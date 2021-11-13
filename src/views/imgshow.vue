@@ -79,7 +79,7 @@ export default {
     var windowW = document.documentElement.clientWidth - 320;
     var windowH = document.documentElement.clientHeight - 360;
     //循环遍历
-    for (var i = 1; i < 24; i++) {
+    for (var i = 1; i < 17; i++) {
       //创建li标签
       var li = document.createElement('li');
       //追加到ul的子元素
